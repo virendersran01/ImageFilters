@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageFilters">
-        <activity android:name=".MainActivity" android:theme="@style/FullScreen">
+        <activity android:name=".EditImageActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

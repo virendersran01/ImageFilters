@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonNewImage"
+        android:id="@+id/buttonEditNewImage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginStart="@dimen/_12sdp"
@@ -61,7 +61,7 @@
         android:text="@string/let_s_create_something_new"
         android:textColor="@color/white"
         android:textSize="@dimen/_13ssp"
-        app:layout_constraintBottom_toTopOf="@id/buttonNewImage"/>
+        app:layout_constraintBottom_toTopOf="@id/buttonEditNewImage"/>
 
     <TextView
         android:id="@+id/textTitle"
