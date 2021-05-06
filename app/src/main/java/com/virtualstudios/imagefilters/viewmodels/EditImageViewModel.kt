@@ -77,7 +77,7 @@ class EditImageViewModel(private  val editImageRepository: EditImageRepository):
     }
 
     private fun emitImageFiltersUiState(
-        isLoading: Boolean,
+        isLoading: Boolean = false,
         imageFilters: List<ImageFilter>? = null,
         error: String? = null
     ){
