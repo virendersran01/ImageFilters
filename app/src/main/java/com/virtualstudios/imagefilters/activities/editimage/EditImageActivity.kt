@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.virtualstudios.imagefilters.activities.main.MainActivity
+import com.virtualstudios.imagefilters.adapters.ImageFiltersAdapter
 import com.virtualstudios.imagefilters.databinding.ActivityEditImageBinding
 import com.virtualstudios.imagefilters.utilities.displayToast
 import com.virtualstudios.imagefilters.utilities.show
@@ -34,9 +35,27 @@ class EditImageActivity : AppCompatActivity() {
             dataState.bitmap?.let { bitmap ->
                 binding.imagePreview.setImageBitmap(bitmap)
                 binding.imagePreview.show()
+                viewModel.loadImageFilters(bitmap)
             } ?: kotlin.run {
                 dataState.error?.let { error ->
                     displayToast(error)
+                }
+            }
+        })
+
+        viewModel.imageFiltersUiState.observe(this, {
+            val imageFiltersDataState = it ?: return@observe
+            binding.imageFiltersProgressBar.visibility =
+                if (imageFiltersDataState.isloading) View.VISIBLE else View.GONE
+            imageFiltersDataState.imageFilters?.let { imageFilters ->
+            ImageFiltersAdapter(imageFilters).also { adapter ->
+                binding.filtersRecyclerView.adapter = adapter
+            }
+
+            } ?: kotlin.run {
+                imageFiltersDataState.error?.let { error ->
+                    displayToast(error)
+
                 }
             }
         })
